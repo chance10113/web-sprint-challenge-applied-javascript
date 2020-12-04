@@ -36,4 +36,4 @@ function Header() {
     return headerDiv;
 
 }
-console.log(Header())
+Header();
