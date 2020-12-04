@@ -47,9 +47,9 @@ axios
 //         entryPointTab.appendChild(element)
 //     })
 
-    console.log("Git-Info", tabData)
-    console.log('entry', entryPointTab)
-    console.log('test', tabData[0])
+    // console.log("Git-Info", tabData)
+    // console.log('entry', entryPointTab)
+    // console.log('test', tabData[0])
    // console.log('Tab function' , newTab(data))
     // response.forEach((tabInfo) => {
     //   const tab = document.createElement('div');

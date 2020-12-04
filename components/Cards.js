@@ -20,13 +20,32 @@
 // Add a listener for click events so that when a user clicks on a card, the headline of the article is logged to the console.
 //
 // Use your function to create a card for each of the articles, and append each card to the DOM.
-
+const entryPointCards = document.querySelector('.cards-container');
 
 axios
 .get('https://lambda-times-api.herokuapp.com/articles')
 .then((res => {
-const cardAxiosInfo = res.data;
-function newCardMaker(cardAxiosInfo){
+const cardAxiosInfo = res.data.articles;
+let bootStrap = (cardAxiosInfo.bootstrap[0])
+//let newCard = newCardMaker(bootStrap);
+//const cardAxiosInfoElements =
+//  cardAxiosInfo.map((cardAxiosInfo) => {
+//     return newCardMaker(cardAxiosInfo)
+// })
+// console.log(bootStrapElements)
+// newCard.forEach(bootStrap => {
+//     return newCardMaker(bootStrap)
+// });
+console.log("res.data",cardAxiosInfo)
+console.log("res.data.articles",cardAxiosInfo)
+console.log("res.data.articles.bootstrap",cardAxiosInfo.bootstrap[0].headline)
+console.log("res.data.articlesARRAY",cardAxiosInfo)
+}))
+.catch(beef => {
+    console.log('ERROR', beef)
+  })
+
+  function newCardMaker(cardObj){
     //creating Elenments
 const card = document.createElement('div');
 const headLine = document.createElement('div');
@@ -40,11 +59,11 @@ headLine.classList.add('headline');
 author.classList.add('author');
 imgContainer.classList.add('img-container');
     //Adding Content
-    // ARTICLE = PLACEHOLDER
-headLine.innerText = cardAxiosInfo.articles.bootstrap.headline
-author.innerText = cardAxiosInfo.authorName
-img.innerHtml = cardAxiosInfo.authorPhoto
-authorSpan.innerText = cardAxiosInfo.authorName
+    // TRY WRITING A MAP/FOREACH FOR BOOTSTRAP/JAVASCRIPT/ETC INDIVIDUAL-LIKE
+headLine.innerText =  cardObj.headline  //cardAxiosInfo.bootstrap[0].headline
+author.innerText =  cardObj.authorName  //cardAxiosInfo.bootstrap[0].authorName
+img.src = cardObj.authorPhoto   //cardAxiosInfo.bootstrap[0].authorPhoto
+authorSpan.innerText = cardObj.authorName  // cardAxiosInfo.bootstrap[0].authorName
     //stitch it together
 entryPointCards.appendChild(card);
 card.appendChild(headLine);
@@ -54,20 +73,10 @@ imgContainer.appendChild(img);
 author.appendChild(authorSpan);
 //eventListener
 card.addEventListener('click', function(){
-    console.log('article.headline')
+    console.log(cardobj.headline)//cardAxiosInfo.headline)
 })
 return card
 }
-newCard = newCardMaker(cardAxiosInfo);
-console.log("res.data",cardAxiosInfo)
-console.log("res.data.articles",cardAxiosInfo.articles)
-console.log("res.data.articles.bootstrap",cardAxiosInfo.articles.bootstrap)
-}))
-.catch(beef => {
-    console.log('ERROR', beef)
-  })
-
-const entryPointCards = document.querySelector('.cards-container');
 
 // function newCardMaker(cardAxiosInfo){
 //     //creating Elenments
