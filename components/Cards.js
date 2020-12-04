@@ -29,6 +29,9 @@ const cardAxiosInfo = res.data.articles;
 let bootStrap = (cardAxiosInfo.bootstrap)
 //let newCard = newCardMaker(bootStrap);
 let javaScript = cardAxiosInfo.javascript
+let tech = cardAxiosInfo.technology
+let jq = cardAxiosInfo.jquery
+let Node = cardAxiosInfo.node
 
 const javaScriptElements = javaScript.map((javascript) => {
     return newCardMaker(javascript)
@@ -38,6 +41,17 @@ const bootStrapElements = bootStrap.map((bootstrap) => {
     return newCardMaker(bootstrap)
 })
 
+const technologyElements = tech.map((technology) => {
+    return newCardMaker(technology)
+})
+
+const jqElements = jq.map((jquery) => {
+    return newCardMaker(jquery)
+})
+
+const NodeElements = Node.map((node) => {
+    return newCardMaker(node)
+})
 // newCard.forEach(bootStrap => {
 //     return newCardMaker(bootStrap)
 // });
