@@ -21,15 +21,18 @@ axios
     const tab = document.createElement('div');
    tab.classList.add('tab')
    tab.innerText = tabData
-   entryPointTab.appendChild(tab)
+    entryPointTab.appendChild(tab)
 }
-    const placeHolder = tabData.map((tabData) => {
-        
-        return newTabMaker(tabData);
-    })
 
-    // placeHolder.forEach((placeHolder) => {
-    //     entryPointTab.appendChild(placeHolder)
+    // tabData.array.forEach(element => {
+    //     return newTabMaker(tabData)
+    // });
+    const placeHolder = tabData.map(((tabData) => {
+        return newTabMaker(tabData);
+    }))
+
+    // placeHolder.forEach((element) => {
+    //     entryPointTab.appendChild(element)
     // })
 
     console.log("Git-Info", tabData)

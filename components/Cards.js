@@ -26,14 +26,6 @@ axios
 .get('https://lambda-times-api.herokuapp.com/articles')
 .then((res => {
 const cardAxiosInfo = res.data;
-console.log("STNONK",cardAxiosInfo)
-}))
-.catch(beef => {
-    console.log('ERROR', beef)
-  })
-
-const entryPointCards = document.querySelector('.cards-container');
-
 function newCardMaker(cardAxiosInfo){
     //creating Elenments
 const card = document.createElement('div');
@@ -49,10 +41,10 @@ author.classList.add('author');
 imgContainer.classList.add('img-container');
     //Adding Content
     // ARTICLE = PLACEHOLDER
-headLine.innerText = 'article.headline'
-author.innerText = 'article.authorName'
-img.innerHtml = 'article.authorPhoto'
-authorSpan.innerText = 'article.authorName'
+headLine.innerText = cardAxiosInfo.articles.bootstrap.headline
+author.innerText = cardAxiosInfo.authorName
+img.innerHtml = cardAxiosInfo.authorPhoto
+authorSpan.innerText = cardAxiosInfo.authorName
     //stitch it together
 entryPointCards.appendChild(card);
 card.appendChild(headLine);
@@ -66,4 +58,47 @@ card.addEventListener('click', function(){
 })
 return card
 }
-console.log('steve', newCardMaker())
+newCard = newCardMaker(cardAxiosInfo);
+console.log("res.data",cardAxiosInfo)
+console.log("res.data.articles",cardAxiosInfo.articles)
+console.log("res.data.articles.bootstrap",cardAxiosInfo.articles.bootstrap)
+}))
+.catch(beef => {
+    console.log('ERROR', beef)
+  })
+
+const entryPointCards = document.querySelector('.cards-container');
+
+// function newCardMaker(cardAxiosInfo){
+//     //creating Elenments
+// const card = document.createElement('div');
+// const headLine = document.createElement('div');
+// const author = document.createElement('div');
+// const imgContainer = document.createElement('div');
+// const img = document.createElement('img');
+// const authorSpan = document.createElement('span');
+//     // adding Classes
+// card.classList.add('card');
+// headLine.classList.add('headline');
+// author.classList.add('author');
+// imgContainer.classList.add('img-container');
+//     //Adding Content
+//     // ARTICLE = PLACEHOLDER
+// headLine.innerText = 'articles.headline'
+// author.innerText = 'articles.authorName'
+// img.innerHtml = 'articles.authorPhoto'
+// authorSpan.innerText = 'articles.authorName'
+//     //stitch it together
+// entryPointCards.appendChild(card);
+// card.appendChild(headLine);
+// card.appendChild(author);
+// author.appendChild(imgContainer);
+// imgContainer.appendChild(img);
+// author.appendChild(authorSpan);
+// //eventListener
+// card.addEventListener('click', function(){
+//     console.log('article.headline')
+// })
+// return card
+// }
+// console.log('steve', newCardMaker())
