@@ -13,15 +13,31 @@ const entryPointTab = document.querySelector('.title')
 axios
 .get('https://lambda-times-api.herokuapp.com/topics')
 .then(res => {
-    const tabInfo = res.data;
+    const data = res.data;
     const response = res;
-    console.log(tabInfo)
-    response.forEach((tabInfo) => {
-      const tab = document.createElement('div');
+    function newTab(tabObj){
+        const tab = document.createElement('div');
        tab.classList.add('tab')
        tab.innerText = 'Steve'
       entryPointTab.appendChild(tab) 
-    })
+    }
+    // const placeHolder = data.map((data) => {
+    //     return newTab(data);
+    // })
+
+    // placeHolder.forEach((placeHolder) => {
+    //     entryPointTab.appendChild(placeHolder)
+    // })
+
+    console.log("Git-Info", data)
+    console.log('Response', response)
+    console.log('Tab function' , newTab(data))
+    // response.forEach((tabInfo) => {
+    //   const tab = document.createElement('div');
+    //    tab.classList.add('tab')
+    //    tab.innerText = 'Steve'
+    //   entryPointTab.appendChild(tab) 
+    // })
 })
 .catch(beef => {
     console.log(beef)
