@@ -26,13 +26,18 @@ axios
 .get('https://lambda-times-api.herokuapp.com/articles')
 .then((res => {
 const cardAxiosInfo = res.data.articles;
-let bootStrap = (cardAxiosInfo.bootstrap[0])
+let bootStrap = (cardAxiosInfo.bootstrap)
 //let newCard = newCardMaker(bootStrap);
-//const cardAxiosInfoElements =
-//  cardAxiosInfo.map((cardAxiosInfo) => {
-//     return newCardMaker(cardAxiosInfo)
-// })
-// console.log(bootStrapElements)
+let javaScript = cardAxiosInfo.javascript
+
+const javaScriptElements = javaScript.map((javascript) => {
+    return newCardMaker(javascript)
+})
+
+const bootStrapElements = bootStrap.map((bootstrap) => {
+    return newCardMaker(bootstrap)
+})
+
 // newCard.forEach(bootStrap => {
 //     return newCardMaker(bootStrap)
 // });
