@@ -10,28 +10,31 @@
 //
 // NOTE: you do _not_ need to install axios as it's included in the HTML via script element
 const entryPointTab = document.querySelector('.title')
+//let tabData = [];
 axios
 .get('https://lambda-times-api.herokuapp.com/topics')
 .then(res => {
-    const data = res.data;
+    let tabData = res.data.topics;
     const response = res;
-    function newTab(tabObj){
-        const tab = document.createElement('div');
-       tab.classList.add('tab')
-       tab.innerText = 'Steve'
-      entryPointTab.appendChild(tab) 
-    }
-    // const placeHolder = data.map((data) => {
-    //     return newTab(data);
-    // })
+   //const newTab = newTabMaker(tabData)
+   function newTabMaker(tabData){
+    const tab = document.createElement('div');
+   tab.classList.add('tab')
+   tab.innerText = tabData
+   entryPointTab.appendChild(tab)
+}
+    const placeHolder = tabData.map((tabData) => {
+        
+        return newTabMaker(tabData);
+    })
 
     // placeHolder.forEach((placeHolder) => {
     //     entryPointTab.appendChild(placeHolder)
     // })
 
-    console.log("Git-Info", data)
+    console.log("Git-Info", tabData)
     console.log('Response', response)
-    console.log('Tab function' , newTab(data))
+   // console.log('Tab function' , newTab(data))
     // response.forEach((tabInfo) => {
     //   const tab = document.createElement('div');
     //    tab.classList.add('tab')
@@ -42,3 +45,5 @@ axios
 .catch(beef => {
     console.log(beef)
   })
+
+ 
