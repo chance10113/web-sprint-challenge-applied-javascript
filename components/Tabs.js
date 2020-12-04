@@ -25,7 +25,7 @@ axios
 }
 
     tabData.map(tabData => {
-    console.log("SNUNEUEUEP")
+    //console.log("SNUNEUEUEP")
      return newTabMaker(tabData)
  });
 
