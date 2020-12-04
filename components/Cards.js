@@ -22,25 +22,25 @@
 // Use your function to create a card for each of the articles, and append each card to the DOM.
 
 
-// axios
-// .get('https://lambda-times-api.herokuapp.com/articles')
-// .then((res => {
-// const cardAxiosInfo = res.data;
-// console.log(cardAxiosInfo)
-// })
-// .catch(beef => {
-//     console.log(beef)
-//   }))
+axios
+.get('https://lambda-times-api.herokuapp.com/articles')
+.then((res => {
+const cardAxiosInfo = res.data;
+console.log("STNONK",cardAxiosInfo)
+}))
+.catch(beef => {
+    console.log('ERROR', beef)
+  })
 
 const entryPointCards = document.querySelector('.cards-container');
 
-function newCardMaker(parameter){
+function newCardMaker(cardAxiosInfo){
     //creating Elenments
 const card = document.createElement('div');
 const headLine = document.createElement('div');
 const author = document.createElement('div');
 const imgContainer = document.createElement('div');
-const img = document.createElemeent('img');
+const img = document.createElement('img');
 const authorSpan = document.createElement('span');
     // adding Classes
 card.classList.add('card');
@@ -49,8 +49,21 @@ author.classList.add('author');
 imgContainer.classList.add('img-container');
     //Adding Content
     // ARTICLE = PLACEHOLDER
-headLine.innerText = article.headline
-author.innerText = article.authorName
-img.innerHtml = article.authorPhoto
-authorSpan.innerText = article.authorName
+headLine.innerText = 'article.headline'
+author.innerText = 'article.authorName'
+img.innerHtml = 'article.authorPhoto'
+authorSpan.innerText = 'article.authorName'
+    //stitch it together
+entryPointCards.appendChild(card);
+card.appendChild(headLine);
+card.appendChild(author);
+author.appendChild(imgContainer);
+imgContainer.appendChild(img);
+author.appendChild(authorSpan);
+//eventListener
+card.addEventListener('click', function(){
+    console.log('article.headline')
+})
+return card
 }
+console.log('steve', newCardMaker())
