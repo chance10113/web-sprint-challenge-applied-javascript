@@ -21,47 +21,51 @@
 //
 // Use your function to create a card for each of the articles, and append each card to the DOM.
 
-const cardEntryPoint = document.querySelector('.cards-container')
+const cardEntryPoint = document.querySelector(".cards-container");
 
 axios
-    .get('https://lambda-times-api.herokuapp.com/articles')
-    .then((res) => {
-        console.log('res.data.articles', res.data.articles)
+  .get("https://lambda-times-api.herokuapp.com/articles")
+  .then((res) => {
+    console.log("res.data.articles", res.data.articles);
 
+    for (const topic in res.data.articles) {
+      res.data.articles[topic].forEach((element) => {
+        cardMaker(element);
+      });
+    }
+  })
+  .catch((error) => {
+    console.log("card-axios failed", error);
+  });
 
-    })
-    .catch((error) => {
-        console.log('card-axios failed', error)
-    })
+function cardMaker(cardObj) {
+  // Creating Elements
+  const card = document.createElement("div");
+  const headline = document.createElement("div");
+  const author = document.createElement("div");
+  const imgContainer = document.createElement("div");
+  const img = document.createElement("img");
+  const authorSpan = document.createElement("span");
+  // Adding Classes
+  card.classList.add("card");
+  headline.classList.add("headline");
+  author.classList.add("author");
+  imgContainer.classList.add("img-container");
+  // Assigning Content
+  headline.innerText = cardObj.headline;
+  img.src = cardObj.authorPhoto;
+  authorSpan.innerText = cardObj.authorName;
+  // Stitching It All Together
+  cardEntryPoint.appendChild(card);
+  card.appendChild(headline);
+  card.appendChild(author);
+  author.appendChild(imgContainer);
+  imgContainer.appendChild(img);
+  author.appendChild(authorSpan);
+  // Adding Event Listener
+  card.addEventListener("click", () => {
+    console.log("Headline clicked", cardObj.headline);
+  });
 
-function cardMaker (cardObj) {
-// Creating Elements
-    const card = document.createElement('div')
-    const headline = document.createElement('div')
-    const author = document.createElement('div')
-    const imgContainer = document.createElement('div')
-    const img = document.createElement('img')
-    const authorSpan = document.createElement('span')
-// Adding Classes
-    card.classList.add('card')
-    headline.classList.add('headline')
-    author.classList.add('author')
-    imgContainer.classList.add('img-container')
-// Assigning Content
-    headline.innerText = cardObj.headline
-    img.src = cardObj.authorPhoto
-    authorSpan.innerText = cardObj.authorName
-// Stitching It All Together
-    cardEntryPoint.appendChild(card)
-    card.appendChild(headline)
-    card.appendChild(author)
-    author.appendChild(imgContainer)
-    imgContainer.appendChild(img)
-    author.appendChild(authorSpan)
-// Adding Event Listener
-    card.addEventListener('click', () => {
-        console.log('Headline clicked', cardObj.headline)
-    })
-
-    return card
+  return card;
 }
