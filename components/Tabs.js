@@ -10,34 +10,30 @@
 //
 // NOTE: you do _not_ need to install axios as it's included in the HTML via script element
 
-const tabEntryPoint = document.querySelector('.topics')
+const tabEntryPoint = document.querySelector(".topics");
 
 axios
-    .get('https://lambda-times-api.herokuapp.com/topics')
-    .then((res) => {
-        // console.log('res', res)
-        // console.log('res.data', res.data)
-        // console.log('res.data.topics', res.data.topics)
+  .get("https://lambda-times-api.herokuapp.com/topics")
+  .then((res) => {
+    // console.log('res.data.topics', res.data.topics)
 
-        let tabData = res.data.topics
-// Tab Making Function
-        function tabMaker(tabData) {
-        // Create Elements
-            const tab = document.createElement('div')
-        // Adding Classes
-            tab.classList.add('tab')
-        // Assigning Content
-            tab.innerText = tabData
-            tabEntryPoint.appendChild(tab)
-        }
-// Mapping Through Data
-        const tabMap = tabData.map(tabData => {
-            return tabMaker(tabData)
-        })
-        
-    })
-    .catch((error) => {
-        console.log('Tab Axios Broke', error)
-    })
-    //Gonna need to create a var for res.data, 
-    //then feed it through a forEach(?), then append all to entry
+    let tabData = res.data.topics;
+    // Tab Making Function
+    function tabMaker(tabData) {
+      // Create Elements
+      const tab = document.createElement("div");
+      // Adding Classes
+      tab.classList.add("tab");
+      // Assigning Content
+      tab.innerText = tabData;
+      tabEntryPoint.appendChild(tab);
+    }
+    // Mapping Through Data
+    const tabMap = tabData.map((tabData) => {
+      return tabMaker(tabData);
+    });
+  })
+  .catch((error) => {
+    console.log("Tab Axios Broke", error);
+  });
+//Don't need to additionally call tabMap function, because the axios.then calls it

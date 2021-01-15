@@ -10,29 +10,29 @@
 //
 // Use your function to create a header
 // and append it to the DOM inside the div.header-container
-const headerEntryPoint = document.querySelector('.header-container')
+const headerEntryPoint = document.querySelector(".header-container");
 
 function Header() {
-// Creating Elements
-    const headerDiv = document.createElement('div')
-    const headerDate = document.createElement('span')
-    const headerH1 = document.createElement('h1')
-    const headerTemp = document.createElement('span')
-// Adding Classes
-    headerDiv.classList.add('header')
-    headerDate.classList.add('date')
-    headerTemp.classList.add('temp')
-// Adding Content
-    headerDate.innerText = 'MARCH 28, 2020'
-    headerH1.innerText = 'LAMBDA TIMES'
-    headerTemp.innerText = '98°'
-// Stitching Together
-    headerEntryPoint.appendChild(headerDiv)
-    headerDiv.appendChild(headerDate)
-    headerDiv.appendChild(headerH1)
-    headerDiv.appendChild(headerTemp)
+  // Creating Elements
+  const headerDiv = document.createElement("div");
+  const headerDate = document.createElement("span");
+  const headerH1 = document.createElement("h1");
+  const headerTemp = document.createElement("span");
+  // Adding Classes
+  headerDiv.classList.add("header");
+  headerDate.classList.add("date");
+  headerTemp.classList.add("temp");
+  // Adding Content
+  headerDate.innerText = "MARCH 28, 2020";
+  headerH1.innerText = "LAMBDA TIMES";
+  headerTemp.innerText = "98°";
+  // Stitching Together
+  headerEntryPoint.appendChild(headerDiv);
+  headerDiv.appendChild(headerDate);
+  headerDiv.appendChild(headerH1);
+  headerDiv.appendChild(headerTemp);
 
-    return headerDiv
+  return headerDiv;
 }
 
 Header();
