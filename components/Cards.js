@@ -28,6 +28,7 @@ axios
     .then((res) => {
         console.log('res.data.articles', res.data.articles)
 
+
     })
     .catch((error) => {
         console.log('card-axios failed', error)
@@ -57,4 +58,10 @@ function cardMaker (cardObj) {
     author.appendChild(imgContainer)
     imgContainer.appendChild(img)
     author.appendChild(authorSpan)
+// Adding Event Listener
+    card.addEventListener('click', () => {
+        console.log('Headline clicked', cardObj.headline)
+    })
+
+    return card
 }
